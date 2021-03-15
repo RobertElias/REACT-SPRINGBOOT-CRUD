@@ -8,8 +8,12 @@ class ListEmployeeComponent extends Component {
     this.state = {
       employees: [],
     };
+    this.addEmployee = this.addEmployee.bind(this);
   }
 
+  addEmployee(){
+    this.props.history.push('/add-employee')
+  }
   componentDidMount () {
     EmployeeService.getEmployees ().then (res => {
       this.setState ({employees: res.data});
@@ -22,7 +26,7 @@ class ListEmployeeComponent extends Component {
         <h2 className="text-center">Employee List</h2>
         <div className="row">
           <button className="btn btn-primary" onClick={this.addEmployee}>
-            {' '}Add Employee
+            Add Employee
           </button>
         </div>
         <br />
@@ -38,13 +42,15 @@ class ListEmployeeComponent extends Component {
             </thead>
        
           <tbody>
-            {this.state.employees.map (employee => (
+            {
+              this.state.employees.map (employee => (
               <tr key={employee.id}>
                 <td> {employee.firstName}</td>
                 <td>{employee.lastName}</td>
                 <td>{employee.emailId}</td>
               </tr>
-            ))}
+            ))
+          }
           </tbody>
              </table>
         </div>
