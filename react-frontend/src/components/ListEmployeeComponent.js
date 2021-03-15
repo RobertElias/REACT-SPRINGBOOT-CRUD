@@ -10,16 +10,22 @@ class ListEmployeeComponent extends Component {
     };
   }
 
-  componentDidMount(){
-      EmployeeService.getEmployees().then((res) => {
-          this.setState({employees: res.data});
-      })
+  componentDidMount () {
+    EmployeeService.getEmployees ().then (res => {
+      this.setState ({employees: res.data});
+    });
   }
 
   render () {
     return (
       <div>
         <h2 className="text-center">Employee List</h2>
+        <div className="row">
+          <button className="btn btn-primary" onClick={this.addEmployee}>
+            {' '}Add Employee
+          </button>
+        </div>
+        <br />
         <div className="row">
           <table className="table table-striped table-bordered">
             <thead>
@@ -30,7 +36,7 @@ class ListEmployeeComponent extends Component {
                 <th>Actions</th>
               </tr>
             </thead>
-          </table>
+       
           <tbody>
             {this.state.employees.map (employee => (
               <tr key={employee.id}>
@@ -40,6 +46,7 @@ class ListEmployeeComponent extends Component {
               </tr>
             ))}
           </tbody>
+             </table>
         </div>
 
       </div>

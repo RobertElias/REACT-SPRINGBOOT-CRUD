@@ -1,10 +1,16 @@
 import './App.css';
+import HeaderComponent from './components/HeaderComponent';
 import ListEmployeeComponent from './components/ListEmployeeComponent';
+import FooterComponent from './components/FooterComponent';
 
-function App() {
+function App () {
   return (
-    <div className="Container">
-      <ListEmployeeComponent/>
+    <div>
+      <HeaderComponent />
+      <div className="Container">
+        <ListEmployeeComponent />
+      </div>
+      <FooterComponent />
     </div>
   );
 }
